@@ -7,8 +7,8 @@ import (
 	"log"
 	"reflect"
 	"strings"
-	"xep/c2s/stream"
-	"xep/entity"
+	"xippo/c2s/stream"
+	"xippo/entity"
 )
 
 func Starter(s stream.Stream) (err error) {

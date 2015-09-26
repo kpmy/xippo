@@ -4,8 +4,8 @@ import (
 	"bytes"
 	"log"
 	"reflect"
-	"xep/c2s/stream"
-	"xep/entity"
+	"xippo/c2s/stream"
+	"xippo/entity"
 )
 
 type Bind struct {

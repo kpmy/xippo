@@ -2,7 +2,7 @@ package actors
 
 import (
 	"sync"
-	"xep/c2s/stream"
+	"xippo/c2s/stream"
 )
 
 type Continue interface {

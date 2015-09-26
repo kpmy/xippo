@@ -3,8 +3,8 @@ package dyn
 import (
 	"math/rand"
 	"strconv"
-	"xep/entity"
-	"xep/tools/dom"
+	"xippo/entity"
+	"xippo/tools/dom"
 )
 
 const (

@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"encoding/xml"
 	"strings"
-	"xep/tools/dom"
+	"xippo/tools/dom"
 )
 
 func setAttr(start *xml.StartElement, name, value string) {

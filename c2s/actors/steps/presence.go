@@ -1,8 +1,8 @@
 package steps
 
 import (
-	"xep/c2s/stream"
-	"xep/entity"
+	"xippo/c2s/stream"
+	"xippo/entity"
 )
 
 func InitialPresence(s stream.Stream) (err error) {

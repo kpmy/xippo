@@ -9,8 +9,8 @@ import (
 	"io"
 	"reflect"
 	"strings"
-	"xep/tools/dom"
-	"xep/units"
+	"xippo/tools/dom"
+	"xippo/units"
 )
 
 func ProduceStatic(i interface{}) *bytes.Buffer {

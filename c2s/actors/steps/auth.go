@@ -4,9 +4,9 @@ import (
 	"bytes"
 	"log"
 	"reflect"
-	"xep/c2s/stream"
-	"xep/entity"
-	"xep/units"
+	"xippo/c2s/stream"
+	"xippo/entity"
+	"xippo/units"
 )
 
 type PlainAuth struct {
