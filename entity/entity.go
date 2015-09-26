@@ -5,12 +5,12 @@ import (
 	"encoding/xml"
 	"errors"
 	"fmt"
+	"github.com/kpmy/xippo/tools/dom"
+	"github.com/kpmy/xippo/units"
 	"github.com/kpmy/ypk/halt"
 	"io"
 	"reflect"
 	"strings"
-	"xippo/tools/dom"
-	"xippo/units"
 )
 
 func ProduceStatic(i interface{}) *bytes.Buffer {

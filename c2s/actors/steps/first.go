@@ -4,11 +4,11 @@ import (
 	"bytes"
 	"errors"
 	"fmt"
+	"github.com/kpmy/xippo/c2s/stream"
+	"github.com/kpmy/xippo/entity"
 	"log"
 	"reflect"
 	"strings"
-	"xippo/c2s/stream"
-	"xippo/entity"
 )
 
 func Starter(s stream.Stream) (err error) {

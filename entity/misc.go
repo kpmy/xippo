@@ -3,8 +3,8 @@ package entity
 import (
 	"bytes"
 	"encoding/xml"
+	"github.com/kpmy/xippo/tools/dom"
 	"strings"
-	"xippo/tools/dom"
 )
 
 func setAttr(start *xml.StartElement, name, value string) {

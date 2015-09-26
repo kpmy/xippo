@@ -1,8 +1,8 @@
 package actors
 
 import (
+	"github.com/kpmy/xippo/c2s/stream"
 	"sync"
-	"xippo/c2s/stream"
 )
 
 type Continue interface {

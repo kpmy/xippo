@@ -1,7 +1,7 @@
 package srv
 
 import (
-	"xippo/units"
+	"github.com/kpmy/xippo/units"
 )
 
 func Resolve(s *units.Server) (host, port string, err error) {

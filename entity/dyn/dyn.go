@@ -1,10 +1,10 @@
 package dyn
 
 import (
+	"github.com/kpmy/xippo/entity"
+	"github.com/kpmy/xippo/tools/dom"
 	"math/rand"
 	"strconv"
-	"xippo/entity"
-	"xippo/tools/dom"
 )
 
 const (

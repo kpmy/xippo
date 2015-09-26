@@ -3,14 +3,14 @@ package stream
 import (
 	"bytes"
 	"errors"
+	"github.com/kpmy/xippo/tools/srv"
+	"github.com/kpmy/xippo/units"
 	"github.com/kpmy/ypk/halt"
 	"hash/adler32"
 	"log"
 	"net"
 	"reflect"
 	"time"
-	"xippo/tools/srv"
-	"xippo/units"
 )
 
 type Stream interface {

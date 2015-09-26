@@ -2,10 +2,10 @@ package steps
 
 import (
 	"bytes"
+	"github.com/kpmy/xippo/c2s/stream"
+	"github.com/kpmy/xippo/entity"
 	"log"
 	"reflect"
-	"xippo/c2s/stream"
-	"xippo/entity"
 )
 
 type Bind struct {
