@@ -9,8 +9,8 @@ import (
 	"net"
 	"reflect"
 	"time"
-	"xep/tools/srv"
-	"xep/units"
+	"xippo/tools/srv"
+	"xippo/units"
 )
 
 type Stream interface {
