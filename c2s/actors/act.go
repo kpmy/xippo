@@ -1,66 +1,22 @@
 package actors
 
 import (
+	"errors"
 	"github.com/kpmy/xippo/c2s/stream"
-	"sync"
+	"github.com/kpmy/ypk/act"
 )
 
-type Continue interface {
-	Do(func(stream.Stream) error, ...func(error)) Continue
-	Run()
+func With() act.Continue {
+	return act.Seq()
 }
-
-type step struct {
-	s   stream.Stream
-	act func(stream.Stream) error
-	err func(error)
-}
-
-type cont struct {
-	s     stream.Stream
-	steps []step
-}
-
-func With(s stream.Stream) Continue {
-	return &cont{s: s}
-}
-
-func (c *cont) Do(fn func(stream.Stream) error, err ...func(error)) Continue {
-	s := step{s: c.s}
-	s.act = fn
-	if len(err) > 0 {
-		s.err = err[0]
-	}
-	c.steps = append(c.steps, s)
-	return c
-}
-
-func (c *cont) Run() {
-	var next *cont
-	var this *step
-	if len(c.steps) > 0 {
-		this = &c.steps[0]
-	}
-	if len(c.steps) > 1 {
-		next = &cont{s: c.s}
-		next.steps = c.steps[1:]
-	}
-	if this != nil {
-		wg := &sync.WaitGroup{}
-		wg.Add(1)
-		go func(this *step, next *cont) {
-			if err := this.act(this.s); err == nil {
-				if next != nil {
-					next.Run()
-				}
-				wg.Done()
-			} else if this.err != nil {
-				this.err(err)
-				wg.Done()
-			} else {
-				panic(err)
-			}
-		}(this, next)
-		wg.Wait()
+func C(fn func(stream.Stream) error) func(interface{}) (interface{}, error) {
+	return func(x interface{}) (ret interface{}, err error) {
+		if s, ok := x.(stream.Stream); ok {
+			ret = s
+			err = fn(s)
+		} else {
+			err = errors.New("unknown stream")
+		}
+		return
 	}
 }
