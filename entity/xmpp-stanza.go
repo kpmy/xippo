@@ -16,8 +16,11 @@ const (
 
 type MessageType string
 
+type PresenceShow string
+
 const (
-	GROUPCHAT MessageType = "groupchat"
+	GROUPCHAT MessageType  = "groupchat"
+	CHAT      PresenceShow = "chat"
 )
 
 type Iq struct {
@@ -66,7 +69,9 @@ func IQ(typ IqType, user interface{}) *Iq {
 
 type Presence struct {
 	XMLName xml.Name
-	To      string `xml:"to,attr,omitempty"`
+	To      string       `xml:"to,attr,omitempty"`
+	Show    PresenceShow `xml:"show,omitempty"`
+	Status  string       `xml:"status,omitempty"`
 }
 
 var PresencePrototype = Presence{XMLName: xml.Name{Local: "presence"}}
