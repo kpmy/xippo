@@ -3,7 +3,7 @@ package entity
 import (
 	"bytes"
 	"encoding/xml"
-	"github.com/kpmy/xippo/tools/dom"
+	"github.com/kpmy/ypk/dom"
 	"strings"
 )
 

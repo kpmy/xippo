@@ -5,8 +5,8 @@ import (
 	"encoding/xml"
 	"errors"
 	"fmt"
-	"github.com/kpmy/xippo/tools/dom"
 	"github.com/kpmy/xippo/units"
+	"github.com/kpmy/ypk/dom"
 	"github.com/kpmy/ypk/halt"
 	"io"
 	"reflect"
@@ -50,6 +50,10 @@ type Entity interface {
 type domm struct {
 	buf   *bytes.Buffer
 	model dom.Element
+}
+
+func (x *domm) Type() string {
+	return x.model.Name()
 }
 
 func (x *domm) Model() dom.Element {

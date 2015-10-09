@@ -2,10 +2,15 @@ package dyn
 
 import (
 	"github.com/kpmy/xippo/entity"
-	"github.com/kpmy/xippo/tools/dom"
+	"github.com/kpmy/ypk/dom"
 	"math/rand"
 	"strconv"
 )
+
+type Entity interface {
+	entity.Entity
+	Type() string
+}
 
 const (
 	PRESENCE = "presence"
