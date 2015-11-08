@@ -4,11 +4,12 @@ import (
 	"bytes"
 	"encoding/xml"
 	"github.com/kpmy/ypk/halt"
-	"io"
+	"net"
 	"reflect"
+	"time"
 )
 
-func spl1t(bunch io.Reader) (ret chan []byte) {
+func spl1t(bunch net.Conn, errHandler func(error)) (ret chan []byte) {
 	ret = make(chan []byte)
 	go func() {
 		d := xml.NewDecoder(bunch)
@@ -40,6 +41,7 @@ func spl1t(bunch io.Reader) (ret chan []byte) {
 		depth := 0
 		init()
 		for stop := false; !stop && err == nil; {
+			bunch.SetDeadline(time.Now().Add(10 * time.Second))
 			if _t, err = d.RawToken(); err == nil {
 				switch t := _t.(type) {
 				case xml.ProcInst:
@@ -74,7 +76,9 @@ func spl1t(bunch io.Reader) (ret chan []byte) {
 				}
 			} else {
 				flush()
+				errHandler(err)
 			}
+			//log.Println("raw token read", err)
 		}
 		close(ret)
 	}()
