@@ -9,7 +9,6 @@ import (
 	"github.com/kpmy/ypk/assert"
 	"github.com/kpmy/ypk/halt"
 	"hash/adler32"
-	"log"
 	"net"
 	"reflect"
 	"time"
@@ -76,9 +75,9 @@ func (x *xmppStream) Id(s ...string) string {
 func (x *xmppStream) Server() *units.Server { return x.to }
 
 func (x *xmppStream) Write(b *bytes.Buffer) (err error) {
-	log.Println("OUT")
-	log.Println(string(b.Bytes()))
-	log.Println()
+	//log.Println("OUT")
+	//log.Println(string(b.Bytes()))
+	//log.Println()
 	_, err = x.conn.Write(b.Bytes())
 	return
 }
@@ -162,9 +161,9 @@ func Dial(_s Stream) (err error) {
 
 					doSplit := func(stream *xmppStream, onErr func(error)) {
 						for data := range spl1t(stream.conn, onErr) {
-							log.Println("SPLIT")
-							log.Println(string(data))
-							log.Println()
+							//log.Println("SPLIT")
+							//log.Println(string(data))
+							//log.Println()
 							stream.data <- pack{data: data, hash: adler32.Checksum(data)}
 						}
 					}
